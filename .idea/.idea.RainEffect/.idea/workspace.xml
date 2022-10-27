@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="888630da-ab3d-4ad3-96be-8ac77f3b50b6" name="Changes" comment="" />
+    <list default="true" id="888630da-ab3d-4ad3-96be-8ac77f3b50b6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.RainEffect/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RainEffect/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RainMaker/Demo/DemoScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RainMaker/Demo/DemoScene.unity" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,6 +15,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file:///Applications/Unity/Hub/Editor/2021.3.5f1/Unity.app/Contents/CGIncludes/Lighting.cginc" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ScreenRain.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -77,12 +81,17 @@
       <workItem from="1666807249427" duration="15000" />
       <workItem from="1666809036245" duration="2017000" />
       <workItem from="1666815441597" duration="38000" />
+      <workItem from="1666815489001" duration="715000" />
+      <workItem from="1666820047103" duration="736000" />
+      <workItem from="1666891399514" duration="419000" />
+      <workItem from="1666892003239" duration="972000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">

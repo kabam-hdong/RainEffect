@@ -3,6 +3,7 @@ Shader "Hidden/ScreenRain"
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "white" {}
+		_RainDensit("Ran Densite", float) = 0.5
 	}
 	SubShader
 	{
@@ -34,6 +35,7 @@ Shader "Hidden/ScreenRain"
 			sampler2D _WipeCanvasTex;
 
 			uniform half _MoreRainAmount;
+			float _RainDensit;
 
 			float3 N13(float p) {
 				float3 p3 = frac(float3(p,p,p) * float3(.1031,.11369,.13787));
@@ -54,7 +56,7 @@ Shader "Hidden/ScreenRain"
 				
 				uv.y += t*0.75;
 				float2 a = float2(6., 1.);
-				float2 grid = a*2.;
+				float2 grid = a * 2;
 				float2 id = floor(uv*grid);
 				
 				float colShift = N(id.x); 
@@ -95,7 +97,7 @@ Shader "Hidden/ScreenRain"
 				return float2(m, trail);
 			}
 			float StaticDrops(float2 uv, float t) {
-				uv *= 40.;
+				uv *= 0.1;
 				
 				float2 id = floor(uv);
 				uv = frac(uv)-.5;
