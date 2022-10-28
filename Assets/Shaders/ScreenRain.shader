@@ -8,14 +8,19 @@ Shader "Hidden/ScreenRain"
 	SubShader
 	{
 		Cull Off ZWrite Off ZTest Always
+		
+		Tags 
+        { 
+        }
 
 		Pass
 		{
-			CGPROGRAM
+			HLSLPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
 			#pragma target 3.0
 			#pragma multi_compile _ WIPE
+			
 			
 			#include "UnityCG.cginc"
 
@@ -30,8 +35,12 @@ Shader "Hidden/ScreenRain"
 				float4 scrPos : TEXCOORD0;
 			};
 
-			sampler2D _MainTex;
+			sampler2D	_MainTex;
+            float4 _MainTex_ST;
+			
 			sampler2D _SrcTex;
+            float4 _SrcTex_ST;
+			
 			sampler2D _WipeCanvasTex;
 
 			uniform half _MoreRainAmount;
@@ -134,12 +143,14 @@ Shader "Hidden/ScreenRain"
 			v2f vert (appdata v)
 			{
 				v2f o;
-				o.pos = UnityObjectToClipPos(v.vertex);
+				//VertexPositionInputs positionInputs = GetVertexPositionInputs(v.vertex.xyz);
+                
+				o.pos = UnityObjectToClipPos(v.vertex.xyz);
 				o.scrPos = ComputeScreenPos(o.pos);
 				return o;
 			}
 
-			fixed4 frag (v2f _iParam) : SV_Target
+			half4 frag (v2f _iParam) : SV_Target
 			{
 				float2 fragCoord = (_iParam.scrPos.xy / _iParam.scrPos.w) * _ScreenParams.xy;
 				float4 fragColor = 0;
@@ -176,19 +187,19 @@ Shader "Hidden/ScreenRain"
 
 				float blend = (n.x + n.y)*(1.75 + _MoreRainAmount);
 
-#if defined(WIPE)
-				float wipe = tex2D(_WipeCanvasTex, UV).r;
-				wipe = saturate(pow(wipe, 0.2));
-				float3 col = tex2D(_MainTex, UV + n * (1 - wipe)).rgb;
-#else
-				float3 col = tex2D(_MainTex, UV + n).rgb;
-#endif
+//#if defined(WIPE)
+//				float wipe = SAMPLE_TEXTURE2D(_WipeCanvasTex, UV).r;
+//				wipe = saturate(pow(wipe, 0.2));
+//				float3 col = SAMPLE_TEXTURE2D(_MainTex, UV + n * (1 - wipe)).rgb;
+//#else
+				float3 col = tex2D(_MainTex,UV + n).rgb;
+//#endif
 
 				fragColor = float4(col, blend);
 
 				return fragColor;
 			}
-			ENDCG
+			ENDHLSL
 		}
 
 		Pass
@@ -232,7 +243,7 @@ Shader "Hidden/ScreenRain"
 				return mainC;
 			}
 			ENDCG
-		}
+		} 
 
 		Pass
 		{
@@ -354,6 +365,6 @@ Shader "Hidden/ScreenRain"
 				return c - 0.005f;
 			}
 			ENDCG
-		}
+		} 
 	}
 }

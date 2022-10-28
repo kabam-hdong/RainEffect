@@ -78,7 +78,7 @@ public class ScreenRain : MonoBehaviour
             return;
         }
 
-        if(wipe)
+        /*if(wipe)
         {
             if(wipeRT == null || !wipeRT.IsCreated())
             {
@@ -110,7 +110,7 @@ public class ScreenRain : MonoBehaviour
             DestroyWipeRT();
             DestroyWipeRTCanvas();
             mtrl.DisableKeyword("WIPE");
-        }
+        }*/
 
         mtrl.SetFloat(moreRainAmountPropId, moreRainAmount);
         mtrl.SetTexture(srcTexPropId, src);
